@@ -1,0 +1,63 @@
+/* =======================================================================
+   RESET E CONFIGURAÇÕES GERAIS
+======================================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* =======================================================================
+   HEADER
+======================================================================= */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #ff6600;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: top 0.3s ease-in-out;
+}
+
+header.hidden {
+    top: -80px;
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+nav button {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 1rem;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+nav button:hover {
+    color: white;
+    background: #ff6600;
+}
+
+/* Header Responsivo */
+@media screen and (max-width: 768px) {
+    nav button {
+        margin-left: 1px;
+    }
+}
+
+@media screen and (max-width: 422px) {
+    header {
+        padding: 10px 10px;
+    }
+}

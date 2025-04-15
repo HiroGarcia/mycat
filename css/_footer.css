@@ -1,0 +1,19 @@
+/* =======================================================================
+   RODAPÉ
+======================================================================= */
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background: #222;
+}
+
+footer img {
+    width: 40px;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+
+footer img:hover {
+    transform: scale(1.1);
+}

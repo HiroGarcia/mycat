@@ -1,25 +1,41 @@
-<!-- Modal de Login -->
-<div id="loginModal" class="modal">
+<div id="authModal" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="closeLoginModal()">&times;</span>
-        <h2>Login</h2>
-        <form id="loginForm">
-            <label for="loginEmail">Email:</label>
-            <input type="email" id="loginEmail" required>
-            <label for="loginPassword">Senha:</label>
-            <input type="password" id="loginPassword" required>
+        <span class="close" onclick="closeAuthModal()">&times;</span>
+
+        {/* -- Formulário de Login -- */}
+        <form id="loginForm" action="/api/login" method="POST">
+            <h2>Login</h2>
+            <div id="loginMessage" class="message" style="display:none;"></div>
+            <div>
+                <label for="loginUsername">Usuário:</label>
+                <input type="text" id="loginUsername" name="username" required>
+            </div>
+            <div>
+                <label for="loginPassword">Senha:</label>
+                <input type="password" id="loginPassword" name="password" required>
+            </div>
             <button type="submit">Entrar</button>
-            <p id="loginMessage"></p>
+            <p class="switch-form-text">Não tem uma conta? <a href="#" onclick="switchToRegister()">Cadastre-se</a></p>
         </form>
-    </div>
-</div>
-<!-- Modal de Logout -->
-<div id="logoutModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeLogoutModal()">&times;</span>
-        <h2>Confirmar Logout</h2>
-        <p>Tem certeza que deseja sair?</p>
-        <button onclick="confirmLogout()">Sim, sair</button>
-        <button onclick="closeLogoutModal()">Cancelar</button>
+
+        {/* -- Formulário de Cadastro (inicialmente oculto) -- */}
+        <form id="registerForm" action="/api/register" method="POST" style="display:none;">
+            <h2>Cadastro</h2>
+            <div id="registerMessage" class="message" style="display:none;"></div>
+            <div>
+                <label for="registerUsername">Usuário:</label>
+                <input type="text" id="registerUsername" name="username" required>
+            </div>
+            <div>
+                <label for="registerPassword">Senha:</label>
+                <input type="password" id="registerPassword" name="password" required>
+            </div>
+            <div>
+                <label for="confirmPassword">Confirmar Senha:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+            <button type="submit">Cadastrar</button>
+            <p class="switch-form-text">Já tem uma conta? <a href="#" onclick="switchToLogin()">Faça Login</a></p>
+        </form>
     </div>
 </div>

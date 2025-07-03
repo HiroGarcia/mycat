@@ -1,6 +1,5 @@
-// src/models/User.ts
 export interface User {
-    id?: number;
+    id: number;
     username: string;
-    password?: string; // A senha não deve ser exposta em todas as operações
+    password?: string; // O hash da senha
 }

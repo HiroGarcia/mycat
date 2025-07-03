@@ -1,43 +1,44 @@
-// src/controllers/authController.ts
 import { Request, Response } from 'express';
-import db from '../database/db';
-import { User } from '../models/User';
+import { authService } from '../services/authService';
 
-export const registerUser = (req: Request, res: Response) => {
-    const { username, password } = req.body;
+export const authController = {
+    async handleRegister(req: Request, res: Response) {
+        const { username, password } = req.body;
+        if (!username || !password) {
+            return res.redirect('/register?error=Todos os campos são obrigatórios.');
+        }
+        try {
+            await authService.registerUser(username, password);
+            res.redirect('/login?success=Cadastro realizado com sucesso!');
+        } catch (error: any) {
+            res.redirect(`/register?error=${encodeURIComponent(error.message)}`);
+        }
+    },
 
-    if (!username || !password) {
-        return res.status(400).json({ "error": "Nome de usuário e senha são obrigatórios" });
+    async handleLogin(req: Request, res: Response) {
+        const { username, password } = req.body;
+        if (!username || !password) {
+            return res.redirect('/login?error=Todos os campos são obrigatórios.');
+        }
+        try {
+            const user = await authService.verifyUser(username, password);
+            if (!user) {
+                return res.redirect('/login?error=Usuário ou senha inválidos.');
+            }
+            req.session.user = user;
+            res.redirect('/adocoes');
+        } catch (error: any) {
+            res.redirect(`/login?error=${encodeURIComponent(error.message)}`);
+        }
+    },
+
+    handleLogout(req: Request, res: Response) {
+        req.session.destroy((err) => {
+            if (err) {
+                return res.redirect('/');
+            }
+            res.clearCookie('connect.sid'); // Limpa o cookie da sessão
+            res.redirect('/');
+        });
     }
-
-    const sql = 'INSERT INTO login (username, password) VALUES (?,?)';
-    const params = [username, password]; // Em um projeto real, use bcrypt para hashear a senha
-
-    db.run(sql, params, function (err) {
-        if (err) {
-            return res.status(400).json({ "error": err.message });
-        }
-        res.json({
-            "message": "success",
-            "data": { id: this.lastID, username: username }
-        });
-    });
-};
-
-export const findUser = (req: Request, res: Response) => {
-    const { id } = req.params;
-    const sql = "SELECT id, username FROM login WHERE id = ?";
-
-    db.get(sql, [id], (err, row: User) => {
-        if (err) {
-            return res.status(400).json({ "error": err.message });
-        }
-        if (!row) {
-            return res.status(404).json({ "error": "Usuário não encontrado" });
-        }
-        res.json({
-            "message": "success",
-            "data": row
-        });
-    });
 };

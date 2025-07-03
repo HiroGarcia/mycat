@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Adoções</title>
+    <link rel="stylesheet" href="/css/_header.css">
+    <link rel="stylesheet" href="/css/_footer.css">
+</head>
+<body>
+    <header>
+        <h1>MyCat</h1>
+        <nav>
+            <a href="/">Voltar para Home</a>
+            <form action="/logout" method="post" style="display:inline;">
+                <button type="submit">Sair</button>
+            </form>
+        </nav>
+    </header>
+    <main>
+        <h2>Lista de Adoções</h2>
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>CPF</th>
+            </tr>
+            <% adocoes.forEach(a => { %>
+                <tr>
+                    <td><%= a.nome %></td>
+                    <td><%= a.telefone %></td>
+                    <td><%= a.email %></td>
+                    <td><%= a.cpf %></td>
+                </tr>
+            <% }) %>
+        </table>
+    </main>
+    <%- include('partials/footer') %>
+</body>
+</html>

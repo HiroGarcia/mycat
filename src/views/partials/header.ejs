@@ -1,0 +1,21 @@
+<header>
+    <span class="menu-icon" onclick="toggleDrawer()">&#9776;</span>
+    <h1>MyCat</h1>
+    <nav id="nav1">
+        <div id="nav2">
+            <button onclick="scrollToSection('inicio')">Home</button>
+            <button onclick="scrollToSection('quem-somos')">Quem Somos</button>
+            <button onclick="scrollToSection('adotar')">Adotar</button>
+            <% if (user) { %>
+                <a href="/adocoes"><button>Ver Adoções</button></a>
+                <form action="/logout" method="post" style="display:inline;">
+                    <button type="submit">Sair</button>
+                </form>
+            <% } else { %>
+                <button id="loginBtn" onclick="loginSection()">Login</button>
+            <% } %>
+        </div>
+        <%- include('partials/modals') %>
+    </nav>
+    <%- include('partials/drawer') %>
+</header>

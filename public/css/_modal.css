@@ -73,8 +73,8 @@
 }
 
 #loginMessage {
-    margin-top: 10px;
-    font-size: 14px;
+    margin-top: 8px;
+    text-align: center;
 }
 
 #logoutModal .modal-content p {
@@ -85,4 +85,49 @@
 
 #logoutModal .modal-content button {
     margin-top: 10px;
+}
+
+/* Links "Cadastre-se" e "Faça Login" */
+.switch-form-text {
+    margin-top: 18px;
+    text-align: center;
+}
+
+.switch-form-text a {
+    color: #ff6600;           /* Laranja igual ao botão */
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.switch-form-text a:hover {
+    color: #688668f4;         /* Verde igual ao botão hover */
+}
+
+/* Alinhar inputs e labels */
+#loginForm div,
+#registerForm div {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 10px;
+}
+
+#loginForm label,
+#registerForm label {
+    text-align: left;
+    margin-bottom: 4px;
+}
+
+#loginForm input,
+#registerForm input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.message.error {
+    color: #d9534f;      /* Vermelho suave */
+    background: none;
+    margin-top: 14px;    /* Espaçamento extra acima */
+    font-size: 1rem;
+    text-align: center;
 }

@@ -101,6 +101,7 @@ export const handleLogout = async (req: Request, res: Response) => {
         if (err) {
             return res.status(500).send('Erro ao fazer logout');
         }
-        res.redirect('/');
+        res.clearCookie('connect.sid'); // Opcional: limpa o cookie da sessão
+        res.redirect('/'); // Redireciona para a home após logout
     });
 };

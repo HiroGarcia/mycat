@@ -249,3 +249,10 @@ function initializeInputMasks() {
     });
 }
 // #endregion
+
+function openAuthModal() {
+    document.getElementById('modals').style.display = 'block';
+}
+function closeAuthModal() {
+    document.getElementById('modals').style.display = 'none';
+}

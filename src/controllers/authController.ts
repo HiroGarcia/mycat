@@ -96,13 +96,11 @@ export const handleLogin = async (req: Request, res: Response): Promise<void> =>
     }
 };
 
-export const handleLogout = (req: Request, res: Response): void => {
+export const handleLogout = async (req: Request, res: Response) => {
     req.session.destroy((err) => {
         if (err) {
-            res.status(500).json({ message: "Não foi possível fazer logout." });
-            return;
+            return res.status(500).send('Erro ao fazer logout');
         }
-        res.clearCookie('connect.sid');
-        res.status(200).json({ message: "Logout realizado com sucesso." });
+        res.redirect('/');
     });
 };

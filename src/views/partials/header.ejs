@@ -8,14 +8,16 @@
             <button onclick="scrollToSection('adotar')">Adotar</button>
             <% if (user) { %>
                 <a href="/adocoes"><button>Ver Adoções</button></a>
-                <form action="/logout" method="post" style="display:inline;">
+                <form action="/api/logout" method="post" style="display:inline;">
                     <button type="submit">Sair</button>
                 </form>
             <% } else { %>
-                <button id="loginBtn" onclick="loginSection()">Login</button>
+                <button id="loginBtn" onclick="openAuthModal()">Login</button>
             <% } %>
         </div>
-        <%- include('partials/modals') %>
+        <% if (!user) { %>
+            <%- include('modals.ejs') %>
+        <% } %>
     </nav>
-    <%- include('partials/drawer') %>
+    <%- include('drawer.ejs') %>
 </header>

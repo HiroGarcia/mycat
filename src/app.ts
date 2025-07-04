@@ -4,6 +4,7 @@ import session from 'express-session';
 import { User } from './models/User'; // Importe o modelo User
 import pageRoutes from './routes/pageRoutes';
 import apiRoutes from './routes/apiRoutes';
+import { handleLogout } from './controllers/authController';
 
 // ====================================================================
 // DECLARAÇÃO DE TIPO GLOBAL PARA A SESSÃO
@@ -48,5 +49,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 // Rotas
 app.use('/', pageRoutes);
 app.use('/api', apiRoutes);
+app.post('/logout', handleLogout);
 
 export default app;

@@ -1,0 +1,99 @@
+/* Corrige sobreposição do header */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+    padding: 110px 10px 20px 10px; /* aumente para 110px */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: #ff6600;
+    margin-bottom: 24px;
+    text-align: left;
+    font-size: 2rem;
+}
+
+/* Tabela invertida */
+.adocoes-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.07);
+}
+
+.adocoes-table th {
+    background: #ff6600;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 14px 10px;
+    border-bottom: 2px solid #ff6600;
+    text-align: left;
+}
+
+.adocoes-table td {
+    background: #fff;
+    color: #ff6600;
+    font-size: 1rem;
+    padding: 14px 10px;
+    border-bottom: 1px solid #ff6600;
+    text-align: left;
+}
+
+.adocoes-table tr:last-child td {
+    border-bottom: none;
+}
+
+nav {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+nav a {
+    color: #ff6600;
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #688668f4;
+}
+
+nav form {
+    display: inline;
+}
+
+footer {
+    flex-shrink: 0;
+    width: 100%;
+    background: #222;
+    color: #000; /* preto */
+    text-align: center;
+    padding: 20px 0 10px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 90px 2px 10px 2px; /* aumente para 90px */
+    }
+    .adocoes-table th, .adocoes-table td {
+        padding: 8px 4px;
+        font-size: 0.95rem;
+    }
+}

@@ -7,11 +7,6 @@ export const pageController = {
         res.render('index', { user: req.session.user, error, success });
     },
 
-    renderLoginPage(req: Request, res: Response) {
-        if (req.session.user) return res.redirect('/adocoes');
-        const { error, success } = req.query;
-        res.render('login', { user: null, error, success });
-    },
 
     renderRegisterPage(req: Request, res: Response) {
         if (req.session.user) return res.redirect('/adocoes');
